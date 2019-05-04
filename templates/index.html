@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission To Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cyborg/bootstrap.min.css" rel="stylesheet" integrity="sha384-mtS696VnV9qeIoC8w/PrPoRzJ5gwydRVn0oQ9b+RJOPxE1Z1jXuuJcyeNxvNZhdx" crossorigin="anonymous">">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class= "jumbotron text-center">
+            <h1> Mission To Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button" style="background-color: rgb(255, 174, 0);">Scrape New Data!</a></p>
+        </div>
+    </div>
+
+    <div class = "container-fluid">
+        <div class="row">
+
+            <div class="col-sm-6 col-md-6 ">
+                    <h2>Latest Mars News</h2>
+                    <h4> {{ mars_data.news_title[0] }} </h4>
+                    <h5> {{ mars_data.news_p[0] }} </h5>
+                    <br>
+            </div>
+
+            
+       
+            <div class="col-sm-6 col-md-6 ">
+                <div class="card border-secondary mb-3"style="max-width: 30rem; height: 100%;" >
+                        <div class="card-body">
+                            <h4 class="card-title">Current Weather On Mars</h4>
+                            <br>
+                            <p class="card-text"style="color: white;" >{{mars_data.mars_weather[0]}}</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class = "row">
+            <div class="col-sm-12 col-md-12 ">
+                <br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6 ">
+                <h2 style="padding-left: 1%;">Featured Mars Image</h2>
+                <img style="padding-left: 1%; max-width:100%; height: 50%;" src="{{ mars_data.featured_image_url }}" style="max-width:100%; max-height: auto;" alt="Mars Featured Image">
+            </div>
+
+            <br>
+
+            <div class="col-sm-6 col-md-6 ">
+                <div class="card border-secondary mb-3"style="max-width: 30rem;" >
+                    <div class="card-body">
+                        <h4 class="card-title">Mars Facts</h4>
+                            <p class="card-text">{{ mars_data.facts_table|safe }}</p>
+                    </div>
+                </div>    
+            </div>
+        </div>  
+
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 ">
+                <h2 style="padding-left: 1%;" >Mars Hemispheres</h2>
+            </div>
+        </div>    
+
+        <div class = "row">
+            <div class="panel-body">
+                <div class="thumbnail" style="width: 25%; float:left;">
+                    <img src= {{ mars_data.hemisphere_urls[0].img_url }} alt="Hemisphere1">
+                    <figcaption style="font-size: 15px; color: black" > {{ mars_data.hemisphere_urls[0]["title"] }} </figcaption>
+                </div>
+                <div class="thumbnail" style="width: 25%; float:left;">
+                    <img src={{ mars_data.hemisphere_urls[1].img_url }} alt="Hemisphere2">
+                    <figcaption style="font-size: 15px; color: black"  >{{ mars_data.hemisphere_urls[1]["title"] }}</figcaption>
+                </div>
+                <div class="thumbnail" style="width: 25%; float:left;">
+                    <img src={{ mars_data.hemisphere_urls[1].img_url }} alt="Hemisphere3">
+                    <figcaption style= "font-size: 15px; color: black" >{{ mars_data.hemisphere_urls[2]["title"] }}</figcaption>
+                </div>
+                <div class="thumbnail" style="width: 25%; float:left;">
+                    <img src={{ mars_data.hemisphere_urls[3].img_url }} alt="Hemisphere4">
+                    <figcaption style="font-size: 15px; color: black" >{{ mars_data.hemisphere_urls[3]["title"] }}</figcaption>
+                </div>
+            </div>   
+        </div>
+
+    </div>  
+
+</body>
+
+</html>
